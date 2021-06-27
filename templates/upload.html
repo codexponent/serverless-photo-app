@@ -1,6 +1,14 @@
 <!doctype html>
-<title>Python Flask Image Upload and Display Example</title>
-<h2>Select an image to upload and display</h2>
+
+<head>
+	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<title>Python Flask Image Upload and Display Example</title>
+  </head>
+
+
+<h2 style="text-align: center;" class="mdc-typography--headline3">Select an image to upload and get notification on your email</h2>
 <p>
 	{% with messages = get_flashed_messages() %}
 	  {% if messages %}
@@ -18,15 +26,31 @@
 	</div>
 {% endif %}
 <form method="post" action="/" enctype="multipart/form-data">
+	<div class="mdc-card" style="text-align: center;">
     <dl>
-		<p>
-			<input type="file" name="file" autocomplete="off" required>
-		</p>
-		<p>
+		
+		<!-- <p>
 			<input type="text" name="your_email" required>
+		</p> -->
+		Email: 
+		<label style="text-align: center;" class="mdc-text-field mdc-text-field--filled">
+			<span class="mdc-text-field__ripple"></span>
+			<span class="mdc-floating-label" id="my-label-id"></span>
+			<input class="mdc-text-field__input" type="text" name="your_email" aria-labelledby="my-label-id">
+			<span class="mdc-line-ripple"></span>
+		  </label>
+
+		  <p>
+			<input style="text-align: center;" type="file" name="file" autocomplete="off" required>
 		</p>
+		
     </dl>
-    <p>
-		<input type="submit" value="Submit">
+    <p style="text-align: center;">
+		<button class="mdc-button foo-button">
+			<div class="mdc-button__ripple"></div>
+			<span class="mdc-button__label">Submit</span>
+		  </button>
+		<!-- <input type="submit" value="Submit"> -->
 	</p>
+</div>
 </form>

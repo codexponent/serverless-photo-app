@@ -34,8 +34,15 @@ def upload_image():
 	if 'file' not in request.files:
 		flash('No file part')
 		return redirect(request.url)
+
+	print('request.form.get')
+	print(request.form.get)
+	
 	file = request.files['file']
 	email= request.form.get("your_email", "")
+
+
+
 	# print("----------------------")
 	# print(email)
 	# print("---------------------------")
@@ -47,9 +54,9 @@ def upload_image():
 	image_str = encoded.decode('utf-8')
 	# print("---------------------------")
 	result = email+image_str
-	print("----------------------")
-	print(result)
-	print("---------------------------")
+	# print("----------------------")
+	# print(result)
+	# print("---------------------------")
 	
 	# Send message to SQS queue
 	response = sqs.send_message(
@@ -84,4 +91,4 @@ def display_image(filename):
 	return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0')#, port=80)
