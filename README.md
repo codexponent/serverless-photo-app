@@ -19,7 +19,12 @@ Let's say we have to architect a solution where we have to design a serverless i
 
 # Replication Steps
 1. Configure your server to run aws cli
-2. Commands to confiure the application
+2. Create a config.ini file in this format
+```bash
+[SQS]
+connection_string=<your-connection-string>
+```
+3. Commands to confiure the application
 ```bash
 git clone git@github.com:codexponent/serverless-photo-app.git
 pip install -r requirements.txt
